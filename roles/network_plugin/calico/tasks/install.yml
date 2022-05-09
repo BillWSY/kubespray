@@ -479,6 +479,7 @@
         "asNumber": "{{ item.as }}",
         "node": "{{ inventory_hostname }}",
         "peerIP": "{{ item.router_id }}",
+        {% if item.keep_original_next_hop|default(false) %}"keepOriginalNextHop": true,{% endif %},
         "sourceAddress": "{{ item.sourceaddress|default('UseNodeIP') }}"
       }}
   register: output
